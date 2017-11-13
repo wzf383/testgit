@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>四则运算</title>
+<script>
+	function jisuan(){
+		var xmlhttp=null;
+		try{
+			xmlhttp = new window.XMLHttpRequest();
+		}catch(e){
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		var s1 = document.getElementById("s1").value;
+		var s2 = document.getElementById("s2").value;
+		var fh = document.getElementById("fh").value;
+		var sub = document.getElementById("sub").value;
+		xmlhttp.open("GET","jisuan.php?s1="+s1+"&s2="+s2+"&fh="+fh+"&sub="+sub);
+		xmlhttp.send();
+		xmlhttp.onreadystatechange = function(){
+			
+			if(xmlhttp.readyState==4 && xmlhttp.status==200){				
+			    document.getElementById("result1").innerHTML = xmlhttp.responseText;
+			}
+		}
+		
+	}
+	
+	function jisuan1(){
+		var xmlhttp=null;
+		try{
+			xmlhttp = new window.XMLHttpRequest();
+		}catch(e){
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		var k1 = document.getElementById("k1").value;
+		var k2 = document.getElementById("k2").value;
+		//var sub1 = document.getElementById("sub1").value;
+		xmlhttp.open("GET","jisuan.php?k1="+k1+"&k2="+k2,true);
+		xmlhttp.send();
+		xmlhttp.onreadystatechange = function(){
+			
+			if(xmlhttp.readyState==4 && xmlhttp.status==200){				
+			    document.getElementById("result2").innerHTML = xmlhttp.responseText;
+			}
+		}
+		
+	}
+</script>
+</head>
+
+<body>
+<form>
+	请输入第一个数:<input type="text" id="s1" /><br/>
+    请输入第二个数:<input type="text" id="s2" /><br/>
+    <select id="fh">
+    	<option value="0">+</option>
+        <option value="1">-</option>
+        <option value="2">*</option>
+        <option value="3">/</option>
+    </select>
+    <input type="button" value="计算结果" id="sub" onclick="jisuan()"/><br />
+    <div id="result1"></div>
+    <hr />
+    请输入长方形的长:<input type="text" id="k1" /><br/>
+    请输入长方形的宽:<input type="text" id="k2" /><br/>
+    <input type="button" value="计算面积"    id="sub1"  onclick="jisuan1()"/>
+     <div id="result2"></div>
+</form>
+</body>
+</html>

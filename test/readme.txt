@@ -1,0 +1,2 @@
+﻿苹果的单词apple,香蕉的英文单词叫banana
+这些都是水果，水果叫fruit。学生的单词叫student
